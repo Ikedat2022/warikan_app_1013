@@ -1,0 +1,185 @@
+/* チェックボックスを非表示にする */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* チェックボックスをボタンスタイルにする */
+label.checkbox-button {
+
+    display: inline-block;
+    padding: 4px 8px;
+    background-color: #eaeaea;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* チェックボックスがチェックされている場合のスタイル */
+input[type="checkbox"]:checked+label.checkbox-button {
+    background-color: yellowgreen;
+    color: white;
+}
+
+/* チェックボックスと関連するラベルの間の余白 */
+input[type="checkbox"]+label {
+    margin-right: 4px;
+}
+
+/* ラジオボタンを非表示にする */
+input[type="radio"] {
+    display: none;
+}
+
+/* ラジオボタンをボタンスタイルにする */
+label.radio-button {
+    display: inline-block;
+    padding: 4px 8px;
+    background-color: #eaeaea;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* ラジオボタンがチェックされている場合のスタイル */
+input[type="radio"]:checked + label.radio-button {
+    background-color: yellowgreen;
+    color: white;
+}
+
+/* ラジオボタンと関連するラベルの間の余白 */
+input[type="radio"] + label.radio-button {
+    margin-right: 4px;
+}
+
+
+/* セレクトボックスのオプションのスタイル */
+select {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: #eaeaea;
+    color: black;
+}
+
+/* セレクトボックスのオプションホバー時のスタイル */
+select option:hover {
+    background-color: #d5d5d5;
+}
+
+/* セレクトボックスのオプションフォーカス時のスタイル */
+select option:focus {
+    outline: none;
+    background-color: #d5d5d5;
+}
+
+/* セレクトボックスの選択されたオプションのスタイル */
+select option:checked {
+    font-weight: bold;
+}
+
+/* ボタンのスタイル */
+button {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: skyblue;
+    color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* ボタンホバー時のスタイル */
+button:hover {
+    background-color: pink;
+}
+
+/* ボタンフォーカス時のスタイル */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ボタンアクティブ時のスタイル */
+button:active {
+    background-color: blue;
+}
+
+/* アラートボタンのスタイル */
+#alertButton {
+    background-color: orange;
+    color: white;
+}
+
+/* アラートボタンホバー時のスタイル */
+#alertButton:hover {
+    background-color: purple;
+}
+
+/* アラートボタンフォーカス時のスタイル */
+#alertButton:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+/* アラートボタンアクティブ時のスタイル */
+#alertButton:active {
+    background-color: red;
+}
+
+/* アラートボタンのスタイル */
+#submit {
+    background-color: green;
+    color: white;
+}
+
+/* アラートボタンホバー時のスタイル */
+#submit:hover {
+    background-color: goldenrod;
+}
+
+/* アラートボタンフォーカス時のスタイル */
+#submit:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+/* アラートボタンアクティブ時のスタイル */
+#submit:active {
+    background-color: red;
+}
+
+/* IDセレクタを使用して特定の要素にスタイルを適用する */
+input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 4px;
+    background-color: #eaeaea;
+    color: black;
+    width: 120px;
+}
+input[type="text"]:focus {
+  outline: 0;
+  border: 2px solid #2196f3;
+}
+
+/* IDセレクタを使用して特定の要素にスタイルを適用する */
+input[type="number"] {
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 4px;
+    background-color: #eaeaea;
+    color: black;
+    width: 120px;
+}
+input[type="number"]:focus {
+  outline: 0;
+  border: 2px solid #2196f3;
+}
+
+p {
+    white-space: pre-wrap;
+  }
+  

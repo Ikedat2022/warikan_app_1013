@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mtbukoh3のGitHub Pages</title>
+    <link rel="stylesheet" href="https://ikedat2022.github.io/warikan_app_1013/index.css">
+</head>
+
+<body>
+    <h1>フレンズ割り勘アプリ</h1>
+    1人目：<input type="text" id="changeAName" placeholder="徳川家康">
+    2人目：<input type="text" id="changeBName" placeholder="石田三成">
+    <br>
+    <button type="button" onclick="changeName()">お名前を設定します</button>
+    <script language="JavaScript" type="text/javascript">
+        function changeName() {
+            if (document.getElementById('changeAName').value == "" || document.getElementById('changeAName').value.lemgth == 0) {
+                var changedAName = "徳川家康";
+            } else {
+                var changedAName = document.getElementById('changeAName').value;
+            }
+            if (document.getElementById('changeBName').value == "" || document.getElementById('changeBName').value.lemgth == 0) {
+                var changedBName = "石田三成";
+            } else {
+                var changedBName = document.getElementById('changeBName').value;
+            }
+            document.getElementById('payAB').textContent = changedAName + 'と' + changedBName + 'の2人分まとめて';
+            document.getElementById('aPay').textContent = changedAName + 'が';
+            document.getElementById('payA').textContent = changedAName + 'の分の';
+            document.getElementById('bPay').textContent = changedBName + 'が';
+            document.getElementById('payB').textContent = changedBName + 'の分の';
+
+            document.getElementById('aPayTotalAmount').textContent = changedAName + 'が支払った合計金額:';
+            document.getElementById('bPayTotalAmount').textContent = changedBName + 'が支払った合計金額:';
+
+            document.getElementById('aPayTextarea').textContent = "【" + changedAName + 'の支払額】';
+            document.getElementById('bPayTextarea').textContent = "【" + changedBName + 'の支払額】';
+            
+            document.getElementById('aPayToABList').textContent = "\n" + document.getElementById('payAB').textContent + "\n";
+            document.getElementById('aPayToBList').textContent = "\n" + document.getElementById('payB').textContent + "\n";
+            document.getElementById('aPayToAList').textContent = "\n" + document.getElementById('payA').textContent + "\n";
+            document.getElementById('bPayToABList').textContent = "\n" + document.getElementById('payAB').textContent + "\n";
+            document.getElementById('bPayToAList').textContent = "\n" + document.getElementById('payA').textContent + "\n";
+            document.getElementById('bPayToBList').textContent = "\n" + document.getElementById('payB').textContent + "\n";
+        }
+    </script>
+    <br>
+    <input type="radio" name="who" id="aPayment" value="aPayment" checked>
+    <label for="aPayment" class="radio-button">
+        <div id="aPay">Aが</div>
+    </label>
+    <input type="radio" name="who" id="bPayment" value="bPayment">
+    <label for="bPayment" class="radio-button">
+        <div id="bPay">Bが</div>
+    </label>
+    <br>
+
+    <input type="radio" name="toWho" id="toAB" value="toAB" checked>
+    <label for="toAB" class="radio-button">
+        <div id="payAB">AとBの2人分まとめて</div>
+    </label>
+    <input type="radio" name="toWho" id="toA" value="toA">
+    <label for="toA" class="radio-button">
+        <div id="payA">Aの分の</div>
+    </label>
+    <input type="radio" name="toWho" id="toB" value="toB">
+    <label for="toB" class="radio-button">
+        <div id="payB">Bの分の</div>
+    </label>
+    <br>
+    <label for="toBeAddingAmount">
+        <input type="text" id="KANJOU" placeholder="食事代">を
+        <input type="number" id="toBeAddingAmount" placeholder="10000">円支払いました。
+    </label>
+    <br>
+    <form id="calculator">
+        <button id="submit" onclick="AddStringToTextarea();">合計金額に追加します</button>
+        <script src="script.js"></script>
+    </form>
+    <script language="JavaScript" type="text/javascript">
+        function AddStringToTextarea() {
+            var UserString = document.getElementById('KANJOU').value;;
+            var addingAmount = document.getElementById('toBeAddingAmount').value;
+            if (UserString.length > 0 && addingAmount.length > 0) {
+                if (document.getElementById('aPayment').checked) {
+                    if (document.getElementById('toAB').checked) {
+                        document.getElementById('aPayToABList').value += "・" + UserString + "を" + addingAmount + "円支払いました。" + "\n";
+                    } else if (document.getElementById('toB').checked) {
+                        document.getElementById('aPayToBList').value += "・" + UserString + "を" + addingAmount + "円支払いました。" + "\n";
+                    } else {
+                        document.getElementById('aPayToAList').value += "・" + UserString + "を" + addingAmount + "円支払いました。" + "\n";
+                    }
+                } else {
+                    if (document.getElementById('toAB').checked) {
+                        document.getElementById('bPayToABList').value += "・" + UserString + "を" + addingAmount + "円支払いました。" + "\n";
+                    } else if (document.getElementById('toB').checked) {
+                        document.getElementById('bPayToBList').value += "・" + UserString + "を" + addingAmount + "円支払いました。" + "\n";
+                    } else {
+                        document.getElementById('bPayToAList').value += "・" + UserString + "を" + addingAmount + "円支払いました。" + "\n";
+                    }
+                }
+            }
+        }
+    </script>
+    <br>
+    <button type="button" onclick="alertHowManyPay()" id="alertButton">いくら払えばいい？</button>
+    <script language="JavaScript" type="text/javascript">
+        function alertHowManyPay() {
+            // アラートメッセージの表記
+            let aPaymentToAAmount = parseInt(document.getElementById('aPaymentToAAmount').value);
+            let aPaymentToBAmount = parseInt(document.getElementById('aPaymentToBAmount').value);
+            let bPaymentToAAmount = parseInt(document.getElementById('bPaymentToAAmount').value);
+            let bPaymentToBAmount = parseInt(document.getElementById('bPaymentToBAmount').value);
+            let numberOfPeople = 2;
+            let alertMessage = null;
+
+            let aName = null;
+            let bName = null;
+            console.log(document.getElementById('changeAName').value);
+            if (document.getElementById('changeAName').value == '' || document.getElementById('changeAName').value == null) {
+                aName = '徳川家康';
+            } else {
+                aName = document.getElementById('changeAName').value;
+            }
+            if (document.getElementById('changeBName').value == '' || document.getElementById('changeBName').value == null) {
+                bName = '石田三成';
+            } else {
+                bName = document.getElementById('changeBName').value;
+            }
+
+            // AさんとBさん
+            if (aPaymentToBAmount > bPaymentToAAmount) {
+                const amountAPayedMore = Math.ceil((aPaymentToBAmount - bPaymentToAAmount) / numberOfPeople);
+                alertMessage = (bName + 'さんは' + aName + 'さんに' + amountAPayedMore + '円支払ってください。\n');
+            } else if (aPaymentToBAmount < bPaymentToAAmount) {
+                const amountBPayedMore = Math.ceil((bPaymentToAAmount - aPaymentToBAmount) / numberOfPeople);
+                alertMessage = (aName + 'さんは' + bName + 'さんに' + amountBPayedMore + '円支払ってください。\n');
+            } else {
+                alertMessage = '…金額に過不足なかったね、ヤるじゃん///'
+            }
+            console.log('alertMessage：' + alertMessage);
+            alert(alertMessage);
+            const aPayToABTextarea = document.getElementById("aPayToABList").value;
+            const aPayToBTextarea = document.getElementById("aPayToBList").value;
+            const aPayToATextarea = document.getElementById("aPayToAList").value;
+            document.getElementById("aPayTextarea").textContent += aPayToABTextarea;
+            document.getElementById("aPayTextarea").textContent += aPayToBTextarea;
+            document.getElementById("aPayTextarea").textContent += aPayToATextarea;
+
+            const bPayToABTextarea = document.getElementById("bPayToABList").value;
+            const bPayToATextarea = document.getElementById("bPayToAList").value;
+            const bPayToBTextarea = document.getElementById("bPayToBList").value;
+            document.getElementById("bPayTextarea").textContent += bPayToABTextarea;
+            document.getElementById("bPayTextarea").textContent += bPayToATextarea;
+            document.getElementById("bPayTextarea").textContent += bPayToBTextarea;
+            document.getElementById("aPayTextarea").style.display = "block";
+            document.getElementById("bPayTextarea").style.display = "block";
+
+            document.getElementById('aPayToABList').value = "";
+            document.getElementById('aPayToBList').value = "";
+            document.getElementById('aPayToAList').value = "";
+            document.getElementById('bPayToABList').value = "";
+            document.getElementById('bPayToAList').value = "";
+            document.getElementById('bPayToBList').value = "";
+
+        }
+    </script>
+    <button type="button" onclick="clearAllInputData()">入力データを削除する</button>
+    <script language="JavaScript" type="text/javascript">
+        function clearAllInputData() {
+            if (confirm('え〜、データ全部消しちゃっていいのお？')) {
+                document.getElementById('toBeAddingAmount').value = "";
+                document.getElementById('totalAmount').value = 0;
+                document.getElementById('aPaymentToAAmount').value = 0;
+                document.getElementById('aPaymentToBAmount').value = 0;
+                document.getElementById('bPaymentToAAmount').value = 0;
+                document.getElementById('bPaymentToBAmount').value = 0;
+                document.getElementById('aPayToABList').textContent = "\n" + document.getElementById('payAB').textContent + "支払額" + "\n";
+                document.getElementById('aPayToBList').textContent = "\n" + document.getElementById('payB').textContent + "支払額" + "\n";
+                document.getElementById('aPayToAList').textContent = "\n" + document.getElementById('payA').textContent + "支払額" + "\n";
+                document.getElementById('bPayToABList').textContent = "\n" + document.getElementById('payAB').textContent + "支払額" + "\n";
+                document.getElementById('bPayToAList').textContent = "\n" + document.getElementById('payA').textContent + "支払額" + "\n";
+                document.getElementById('bPayToBList').textContent = "\n" + document.getElementById('payB').textContent + "支払額" + "\n";
+                alert('やーば。いや、さすがにやべえ。おー、金！金だろ！いやマジで。金だろ普通に');
+            }
+        }
+    </script>
+    <br>
+    <p><span id="aPayTextarea" style=display:none>【Aが】</span></p>
+    <p><span id="bPayTextarea" style=display:none>【Bが】</span></p>
+
+    <label for="aPayTotalAmount">Aが支払った合計金額:</label>
+    <input type="number" id="aPayTotalAmount" value=0 required>円
+    <label for="bPayTotalAmount">Bが支払った合計金額:</label>
+    <input type="number" id="bPayTotalAmount" value=0 required>円
+    <br>
+    <label for="totalAmount">合計金額:</label>
+    <input type="number" id="totalAmount" value=0 required>円
+    <br>
+    <p><textarea cols="50" rows="6" id="aPayToABList" style="display:none;" readonly>AとBの2人分まとめて</textarea></p>
+    <p><textarea cols="50" rows="6" id="aPayToBList" style="display:none;" readonly>Bの分を</textarea></p>
+    <p><textarea cols="50" rows="6" id="aPayToAList" style="display:none;" readonly>Aの分を</textarea></p>
+    <p><textarea cols="50" rows="6" id="bPayToABList" style="display:none;" readonly>AとBの2人分まとめて</textarea></p>
+    <p><textarea cols="50" rows="6" id="bPayToAList" style="display:none;" readonly>Aの分を</textarea></p>
+    <p><textarea cols="50" rows="6" id="bPayToBList" style="display:none;" readonly>Bの分を</textarea></p>
+
+    <label for="aPaymentToAAmount">
+        <input type="hidden" id="aPaymentToAAmount" value=0 required></label>
+    <label for="aPaymentToBAmount">
+        <input type="hidden" id="aPaymentToBAmount" value=0 required></label>
+    <label for="bPaymentToAAmount">
+        <input type="hidden" id="bPaymentToAAmount" value=0 required></label>
+    <label for="bPaymentToBAmount">
+        <input type="hidden" id="bPaymentToBAmount" value=0 required></label>
+    <br>
+</body>
+
+</html>
