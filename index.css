@@ -15,13 +15,13 @@ label.checkbox-button {
 }
 
 /* チェックボックスがチェックされている場合のスタイル */
-input[type="checkbox"]:checked+label.checkbox-button {
+input[type="checkbox"]:checked + label.checkbox-button {
     background-color: yellowgreen;
     color: white;
 }
 
 /* チェックボックスと関連するラベルの間の余白 */
-input[type="checkbox"]+label {
+input[type="checkbox"] + label {
     margin-right: 4px;
 }
 
@@ -81,6 +81,7 @@ select option:checked {
 /* ボタンのスタイル */
 button {
     padding: 8px 16px;
+    margin: 0;
     font-size: 16px;
     background-color: skyblue;
     color: white;
@@ -159,9 +160,10 @@ input[type="text"] {
     color: black;
     width: 120px;
 }
+
 input[type="text"]:focus {
-  outline: 0;
-  border: 2px solid #2196f3;
+    outline: 0;
+    border: 2px solid #2196f3;
 }
 
 /* IDセレクタを使用して特定の要素にスタイルを適用する */
@@ -174,12 +176,13 @@ input[type="number"] {
     color: black;
     width: 120px;
 }
+
 input[type="number"]:focus {
-  outline: 0;
-  border: 2px solid #2196f3;
+    outline: 0;
+    border: 2px solid #2196f3;
 }
 
 p {
     white-space: pre-wrap;
-  }
-  
+    margin: 0;
+}
